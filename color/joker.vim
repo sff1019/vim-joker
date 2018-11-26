@@ -75,14 +75,19 @@ let s:colors.base_4 = {'gui': '#282b26', 'cterm': 235} " line bg
 let s:colors.base_5 = {'gui': '#6b6b6b', 'cterm': 242} " line fg
 let s:colors.base_6 = {'gui': '#0f1f07', 'cterm': 22} " status line
 let s:colors.base_7 = {'gui': '#3d5570', 'cterm': 60} " special key
+let s:colors.base_8 = {'gui': '#9064d1', 'cterm': 98} " Identifier
 
 " Other colors
-let s:colors.red = {'gui': '#d13b33', 'cterm': 167}
+let s:colors.red = {'gui': '#d12c34', 'cterm': 167}
 let s:colors.blue = {'gui': '#6e83a8', 'cterm': 67}
+let s:colors.darkblue = {'gui': '#0d1724', 'cterm': 235}
 let s:colors.darkgray = {'gui': '#adadad', 'cterm': 145}
+let s:colors.darkgreen = {'gui': '#211f1a', 'cterm': 234}
 let s:colors.lightgray = {'gui': '#acb0b5', 'cterm': 249}
+let s:colors.lightpurple = {'gui': '#c8acff', 'cterm': 183}
 let s:colors.purple = {'gui': '#444675', 'cterm': 60}
 let s:colors.yellow = {'gui': '#b6bd84', 'cterm': 144}
+let s:colors.black = {'gui': '#000000', 'cterm' None}
 
 " No colors
 let s:colors.null = {'gui': 'NONE', 'cterm': 'NONE'}
@@ -107,102 +112,99 @@ call s:Col('SignColumn', '', s:linenr_background)
 call s:Col('ColorColumn', '', s:linenr_background)
 
 " Visual selection.
-call s:Col('Visual', '', 'base3')
+call s:Col('Visual', '', 'base_7')
 
 " Easy-to-guess code elements.
-call s:Col('Comment', 'blue')
-call s:Col('String', 'green')
-call s:Col('Number', 'orange')
-call s:Col('Statement', 'base5')
-call s:Col('Special', 'orange')
+call s:Col('Comment', 'purple')
+call s:Col('String', 'darkgray')
+call s:Col('Number', 'red')
+call s:Col('Statement', 'base_2')
+call s:Col('Special', 'base_7')
 call s:Col('Identifier', 'base5')
 
 " Constants, Ruby symbols.
-call s:Col('Constant', 'magenta')
+call s:Col('Constant', 'blue')
 
 " Some HTML tags (<title>, some <h*>s)
-call s:Col('Title', 'orange')
+call s:Col('Title', 'yellow')
 
 " <a> tags.
 call s:Col('Underlined', 'yellow')
 call s:Attr('Underlined', 'underline')
 
 " Types, HTML attributes, Ruby constants (and class names).
-call s:Col('Type', 'orange')
+call s:Col('Type', 'base_2')
 
 " Stuff like 'require' in Ruby.
 call s:Col('PreProc', 'red')
 
 " Tildes on the bottom of the page.
-call s:Col('NonText', 'blue')
+call s:Col('NonText', 'base_7')
 
-" Concealed stuff.
-call s:Col('Conceal', 'cyan', s:background)
+" " Concealed stuff.
+" call s:Col('Conceal', 'cyan', s:background)
 
 " TODO and similar tags.
-call s:Col('Todo', 'magenta', s:background)
+call s:Col('Todo', 'yellow', s:background)
 
 " The column separating vertical splits.
-call s:Col('VertSplit', 'blue', s:linenr_background)
-call s:Col('StatusLineNC', 'blue', 'base2')
+call s:Col('VertSplit', 'base_3', s:linenr_background)
+call s:Col('StatusLineNC', 'base_3', 'base2')
 
 " Matching parenthesis.
-call s:Col('MatchParen', 'base6', 'orange')
+call s:Col('MatchParen', 'yellow', 'orange')
 
 " Special keys, e.g. some of the chars in 'listchars'. See ':h listchars'.
-call s:Col('SpecialKey', 'base3')
+call s:Col('SpecialKey', 'base_7')
 
 " Folds.
-call s:Col('Folded', 'base6', 'blue')
-call s:Col('FoldColumn', 'base5', 'base3')
+call s:Col('Folded', 'darkblue', 'blue')
+call s:Col('FoldColumn', 'darkblue', 'blue')
 
 " Searching.
-call s:Col('Search', 'base2', 'yellow')
+call s:Col('Search', 'darkblue', 'yellow')
 call s:Attr('IncSearch', 'reverse')
 
 " Popup menu.
-call s:Col('Pmenu', 'base6', 'base2')
-call s:Col('PmenuSel', 'base7', 'blue')
-call s:Col('PmenuSbar', '', 'base2')
-call s:Col('PmenuThumb', '', 'blue')
+call s:Col('Pmenu', 'lightgray', 'darkgreen')
+call s:Col('PmenuSel', 'darkblue', 'base_2')
+call s:Col('PmenuSbar', '', 'base_5')
+call s:Col('PmenuThumb', '', 'black')
 
 " Command line stuff.
-call s:Col('ErrorMsg', 'red', 'base1')
-call s:Col('Error', 'red', 'base1')
+call s:Col('ErrorMsg', 'red', 'base_0')
+call s:Col('Error', 'red', 'base_0')
 call s:Col('ModeMsg', 'blue')
 call s:Col('WarningMsg', 'red')
 
 " Wild menu.
 " StatusLine determines the color of the non-active entries in the wild menu.
-call s:Col('StatusLine', 'base5', 'base2')
-call s:Col('WildMenu', 'base7', 'cyan')
-
-" The 'Hit ENTER to continue prompt'.
-call s:Col('Question', 'green')
+call s:Col('StatusLine', 'base_1', 'base_4')
+call s:Col('WildMenu', 'darkblue', 'blue')
 
 " Tab line.
-call s:Col('TabLineSel', 'base7', 'blue')  " the selected tab
-call s:Col('TabLine', 'base6', 'base2')     " the non-selected tabs
-call s:Col('TabLineFill', 'base0', 'base0') " the rest of the tab line
+call s:Col('TabLineSel', 'lightgray', 'base_4')  " the selected tab
+call s:Col('TabLine', '', 'darkgreen')     " the non-selected tabs
+call s:Col('TabLineFill', 'base_0', 'base_0') " the rest of the tab line
 
 " Spelling.
-call s:Col('SpellBad', 'base7', 'red')
-call s:Col('SpellCap', 'base7', 'blue')
-call s:Col('SpellLocal', 'yellow')
-call s:Col('SpellRare', 'base7', 'violet')
+call s:Col('SpellBad', 'lightpurple', 'darkblue')
+call s:Col('SpellCap', 'lightpurple', 'darkblue')
+call s:Col('SpellLocal', 'lightpurple')
+call s:Col('SpellRare', 'lightpurple', 'darkblue')
 
 " Diffing.
-call s:Col('DiffAdd', 'base7', 'green')
-call s:Col('DiffChange', 'base7', 'blue')
-call s:Col('DiffDelete', 'base7', 'red')
-call s:Col('DiffText', 'base7', 'cyan')
-call s:Col('DiffAdded', 'green')
+call s:Col('DiffAdd', 'lightgray', 'darkgreen')
+call s:Col('DiffChange', 'lightgray', 'blue')
+call s:Col('DiffDelete', 'lightgray', 'red')
+call s:Col('DiffText', 'lightgray', 'darkgreen')
+call s:Col('DiffAdded', 'darkgreen')
 call s:Col('DiffChanged', 'blue')
 call s:Col('DiffRemoved', 'red')
 call s:Col('DiffSubname', 'blue')
 
 " Directories (e.g. netrw).
-call s:Col('Directory', 'cyan')
+call s:Col('Directory', 'darkgreen')
 
 
 " Programming languages and filetypes ==========================================
@@ -213,28 +215,14 @@ call s:Col('rubyStringDelimiter', 'green')
 
 " HTML (and often Markdown).
 call s:Col('htmlArg', 'blue')
-call s:Col('htmlItalic', 'magenta')
-call s:Col('htmlBold', 'cyan', '')
+call s:Col('htmlItalic', 'red')
+call s:Col('htmlBold', 'yellow', '')
 
 " Python
 call s:Col('pythonStatement', 'blue')
 
 
 " Plugin =======================================================================
-
-" GitGutter
-call s:Col('GitGutterAdd', 'green', s:linenr_background)
-call s:Col('GitGutterChange', 'cyan', s:linenr_background)
-call s:Col('GitGutterDelete', 'orange', s:linenr_background)
-call s:Col('GitGutterChangeDelete', 'magenta', s:linenr_background)
-
-" CtrlP
-call s:Col('CtrlPNoEntries', 'base7', 'orange') " no entries
-call s:Col('CtrlPMatch', 'green')               " matching part
-call s:Col('CtrlPPrtBase', 'blue')             " '>>>' prompt
-call s:Col('CtrlPPrtText', 'cyan')              " text in the prompt
-call s:Col('CtrlPPtrCursor', 'base7')           " cursor in the prompt
-
 " unite.vim
 call s:Col('UniteGrep', 'base7', 'green')
 let g:unite_source_grep_search_word_highlight = 'UniteGrep'
