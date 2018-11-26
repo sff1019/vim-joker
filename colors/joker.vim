@@ -8,12 +8,9 @@
 
 "============ Syntax ================="
 hi clear
-if exists("syntax_on")
-	syntax reset
-endif
-
+if exists('syntax_on') | syntax reset | endif
 set background=dark
-let g:colors_name= 'joker'
+let g:colors_name = 'joker'
 
 "============= Helper Functions ============"
 " Based on vim-gotham
