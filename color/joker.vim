@@ -13,7 +13,7 @@ if exists("syntax_on")
 endif
 
 set background=dark
-let colors_name="joker"
+let g:colors_name= 'joker'
 
 "============= Helper Functions ============"
 " Based on vim-gotham
