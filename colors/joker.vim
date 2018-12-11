@@ -64,7 +64,7 @@ endfunction
 let s:colors = {}
 
 " Base colors
-let s:colors.base_0 = {'gui': '#000310', 'cterm': 17} " bg
+let s:colors.base_0 = {'gui': '#000310', 'cterm': 16} " bg
 let s:colors.base_1 = {'gui': '#ffffff', 'cterm': 15} " fg
 let s:colors.base_2 = {'gui': '#2d8f1a', 'cterm': 28} " statement
 let s:colors.base_3 = {'gui': '#315099', 'cterm': 67} " function
