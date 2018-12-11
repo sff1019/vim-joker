@@ -1,241 +1,330 @@
-"                 __        __
-"                |__| ____ |  | __ ___________
-"                |  |/  _ \|  |/ // __ \_  __ \
-"                |  (  <_> )    <\  ___/|  | \/
-"            /\__|  |\____/|__|_ \\___  >__|
-"            \______|           \/    \/
+" Color scheme based on Molokai by Tomas Restrepo and badwolf by Steve Losh.
 "
+" Author: Niels Madan
+" URL: github.com/nielsmadan/harlequin
 
-"============ Syntax ================="
 hi clear
-if exists('syntax_on') | syntax reset | endif
+
 set background=dark
-let g:colors_name = 'joker'
 
-"============= Helper Functions ============"
-" Based on vim-gotham
+if exists("syntax_on")
+    syntax reset
+endif
 
-function! s:Highlight(args)
-  exec 'highlight ' . join(a:args, ' ')
+if !has("gui_running") && &t_Co != 256
+    finish
+endif
+
+let g:colors_name = "harlequin"
+
+let s:text = ['#F8F8F2', 15]
+let s:text_bg = ['#1C1B1A', 234]
+
+let s:white = ['#FFFFFF', 15]
+let s:black = ['#000000', 0]
+let s:greys = [['#BEBEBE', 250], ['#808080', 244], ['#696969', 242], ['#545454', 240], ['#343434', 236], ['#080808', 232]]
+
+let s:cerise = ['#FF0033', 197]
+
+let s:lime = ['#AEEE00', 154]
+
+let s:gold = ['#FFB829', 214]
+
+let s:brick = ['#CB4154', 167]
+
+let s:lilac = ['#AE81FF', 141]
+
+let s:frost = ['#2C89C7', 68]
+
+let s:sunny = ['#FFFC7F', 228]
+
+let s:mordant = ['#AE0C00', 124]
+
+let s:auburn = ['#7C0A02', 88]
+let s:moss = ['#004225', 22]
+
+" pass empty string for defaults: guifg - fg, guibg - bg, gui - none, guisp - fg
+function! s:Highlight(group_name, guifg, guibg, gui, guisp)
+    if !empty(a:guifg)
+        let guifg = a:guifg
+    else
+        let guifg = ['fg', 'fg']
+    endif
+    if !empty(a:guibg)
+        let guibg = a:guibg
+    else
+        let guibg = ['bg', 'bg']
+    endif
+    if !empty(a:gui)
+        let gui = a:gui
+    else
+        let gui = 'none'
+    endif
+    if !empty(a:guisp)
+        let guisp = a:guisp
+    else
+        let guisp = ['fg', 'fg']
+    endif
+
+    if has("gui_running")
+        exe 'hi ' . a:group_name . ' guifg=' . guifg[0] . ' guibg=' . guibg[0] . ' gui=' . gui . ' guisp=' . guisp[0]
+    else
+        exe 'hi ' . a:group_name . ' ctermfg=' . guifg[1] . ' ctermbg=' . guibg[1] . ' cterm=' . gui
+    endif
 endfunction
 
-function! s:AddGroundValues(accumulator, ground, color)
-	let new_list = a:accumulator
-	for [platform, value] in items(a:color)
-		call add(a:new_list, platform . a:ground . '=' . value)
-	endfor
+" Function without defaults.
+function! s:HighlightX(group_name, guifg, guibg, gui, guisp)
+    if empty(a:guifg) && empty(a:guibg) && empty(a:gui) && !has("gui_running")
+        return
+    endif
 
-	return new_list
+    let hi_str = 'hi ' . a:group_name
+
+    if !empty(a:guifg)
+        if has("gui_running")
+            let hi_str = hi_str . ' guifg=' . a:guifg[0]
+        else
+            let hi_str = hi_str . ' ctermfg=' . a:guifg[1]
+        endif
+    endif
+
+    if !empty(a:guibg)
+        if has("gui_running")
+            let hi_str = hi_str . ' guibg=' . a:guibg[0]
+        else
+            let hi_str = hi_str . ' ctermbg=' . a:guibg[1]
+        endif
+    endif
+
+    if !empty(a:gui)
+        if has("gui_running")
+            let hi_str = hi_str . ' gui=' . a:gui
+        else
+            let hi_str = hi_str . ' cterm=' . a:gui
+        endif
+    endif
+
+    if !empty(a:guisp) && has("gui_running")
+        let hi_str = hi_str . ' guisp=' . a:guisp[0]
+    endif
+
+    exe hi_str
 endfunction
 
-" Set Ground colors
-function! s:Col(group, fg_col, bg_col, sp_col)
+call s:Highlight('Normal', s:text, s:text_bg, '', '')
 
-  let pieces = [a:group]
+call s:Highlight('Statement',   s:cerise, '', 'bold', '')
+call s:Highlight('Keyword',     s:cerise, '', 'bold', '')
+call s:Highlight('Conditional', s:cerise, '', 'bold', '')
+call s:Highlight('Operator',    s:cerise, '', '', '')
+call s:Highlight('Label',       s:cerise, '', '', '')
+call s:Highlight('Repeat',      s:cerise, '', 'bold', '')
 
-  if a:fg_col !=# ''
-    let pieces = s:AddGroundValues(pieces, 'fg', s:colors[a:fg_col])
-  endif
+call s:Highlight('Type',            s:brick, '', '', '')
+call s:Highlight('StorageClass',    s:cerise, '', '', '')
+call s:Highlight('Structure',       s:cerise, '', '', '')
+call s:Highlight('TypeDef',         s:cerise, '', 'bold', '')
 
-  if a:bg_col !=# ''
-    let pieces = s:AddGroundValues(pieces, 'bg', s:colors[a:bg_col])
-  endif
+call s:Highlight('Exception',       s:lime, '', 'bold', '')
+call s:Highlight('Include',         s:lime, '', 'bold', '')
 
-	if a:sp_col !=# ''
-		let pieces = s:AddGroundValues(pieces, 'sp', s:colors[a:sp_col])
-	endif
+call s:Highlight('PreProc',         s:lime, '', '', '')
+call s:Highlight('Macro',           s:lime, '', '', '')
+call s:Highlight('Define',          s:lime, '', '', '')
+call s:Highlight('Delimiter',       s:lime, '', '', '')
+call s:Highlight('Ignore',          s:lime, '', '', '')
+call s:Highlight('PreCondit',       s:lime, '', 'bold', '')
+call s:Highlight('Debug',           s:lime, '', 'bold', '')
 
-  call s:Clear(a:group)
-  call s:Highlight(pieces)
-endfunction
+call s:Highlight('Function',        s:gold, '', '', '')
+call s:Highlight('Identifier',      s:gold, '', '', '')
 
-function! s:Attr(group, attr)
-  let l:attrs = [a:group, 'term=' . a:attr, 'cterm=' . a:attr, 'gui=' . a:attr]
-  call s:Highlight(l:attrs)
-endfunction
+call s:Highlight('Comment',         s:frost, '', '', '')
+call s:Highlight('CommentEmail',    s:frost, '', 'underline', '')
+call s:Highlight('CommentUrl',      s:frost, '', 'underline', '')
+call s:Highlight('SpecialComment',  s:frost, '', 'bold', '')
+call s:Highlight('Todo',            s:frost, '', 'bold', '')
 
-function! s:Clear(group)
-  exec 'highlight clear ' . a:group
-endfunction
+call s:Highlight('String',          s:sunny, '', '', '')
+call s:Highlight('SpecialKey',      s:lilac, '', 'bold', '')
+call s:Highlight('Special',         s:lilac, '', 'bold', '')
+call s:Highlight('SpecialChar',     s:lilac, '', 'bold', '')
 
+call s:Highlight('Boolean',         s:lilac, '', 'bold', '')
+call s:Highlight('Character',       s:lilac, '', 'bold', '')
+call s:Highlight('Number',          s:lilac, '', 'bold', '')
+call s:Highlight('Constant',        s:lilac, '', 'bold', '')
+call s:Highlight('Float',           s:lilac, '', 'bold', '')
 
-"============= Colors ===================="
-" Store all the colors in a dictionary
-let s:colors = {}
+call s:Highlight('FoldColumn',      s:white, s:greys[4], '', '')
+call s:Highlight('Folded',          s:white, s:greys[4], '', '')
 
-" Base colors
-let s:colors.base_0 = {'gui': '#000310', 'cterm': 17} " bg
-let s:colors.base_1 = {'gui': '#ffffff', 'cterm': 15} " fg
-let s:colors.base_2 = {'gui': '#2d8f1a', 'cterm': 28} " statement
-let s:colors.base_3 = {'gui': '#315099', 'cterm': 67} " function
-let s:colors.base_4 = {'gui': '#282b26', 'cterm': 235} " line bg
-let s:colors.base_5 = {'gui': '#6b6b6b', 'cterm': 242} " line fg
-let s:colors.base_6 = {'gui': '#0f1f07', 'cterm': 22} " status line
-let s:colors.base_7 = {'gui': '#3d5570', 'cterm': 60} " special key
-let s:colors.base_8 = {'gui': '#9064d1', 'cterm': 98} " Identifier
+call s:Highlight('MatchParen',      s:black, s:gold, 'bold', '')
 
-" Other colors
-let s:colors.red = {'gui': '#d12c34', 'cterm': 167}
-let s:colors.blue = {'gui': '#6e83a8', 'cterm': 67}
-let s:colors.darkblue = {'gui': '#0d1724', 'cterm': 235}
-let s:colors.darkgray = {'gui': '#adadad', 'cterm': 145}
-let s:colors.darkgreen = {'gui': '#211f1a', 'cterm': 234}
-let s:colors.lightgray = {'gui': '#acb0b5', 'cterm': 249}
-let s:colors.lightpurple = {'gui': '#c8acff', 'cterm': 183}
-let s:colors.purple = {'gui': '#444675', 'cterm': 60}
-let s:colors.yellow = {'gui': '#b6bd84', 'cterm': 144}
-let s:colors.black = {'gui': '#000000', 'cterm' None}
+call s:Highlight('LineNr',          s:greys[2], '', '', '')
+call s:Highlight('NonText',         s:greys[2], '', '', '')
+call s:HighlightX('CursorColumn',   '', s:greys[5], '', '')
+call s:HighlightX('CursorLine',     '', s:greys[5], '', '')
+call s:Highlight('SignColumn',      '', s:greys[5], '', '')
+call s:HighlightX('ColorColumn',    '', s:greys[5], '', '')
 
-" No colors
-let s:colors.null = {'gui': 'NONE', 'cterm': 'NONE'}
+call s:Highlight('Error',           s:mordant, s:greys[5], 'bold', '')
+call s:Highlight('ErrorMsg',        s:mordant, '', 'bold', '')
+call s:Highlight('WarningMsg',      s:mordant, '', '', '')
 
-" Native highlighting ==========================================================
+call s:Highlight('Cursor',          s:greys[5], s:white, '', '')
+call s:Highlight('vCursor',         s:greys[5], s:white, '', '')
+call s:Highlight('iCursor',         s:greys[5], s:white, '', '')
 
-let s:background = 'base_0'
-let s:linenr_background = 'base_4'
+call s:Highlight('StatusLine',      s:white, s:black, 'bold', '')
+call s:Highlight('StatusLineNC',    s:greys[1], s:greys[5], 'bold', '')
+call s:Highlight('VertSplit',       s:greys[1], s:greys[5], 'bold', '')
 
-" Everything starts here.
-call s:Col('Normal', 'base_1', s:background)
+call s:Highlight('ModeMsg',         s:sunny, '', 'bold', '')
 
-" Line, cursor and so on.
-call s:Col('Cursor', 'base_4', 'base_1')
-call s:Col('CursorLine', '', 'base_4')
-call s:Col('CursorColumn', '', 'base_4')
+if has("spell")
+    call s:HighlightX('SpellBad',    '', '', 'undercurl', s:mordant)
+    call s:HighlightX('SpellCap',    '', '', 'undercurl', s:auburn)
+    call s:HighlightX('SpellLocal',  '', '', 'undercurl', s:auburn)
+    call s:HighlightX('SpellRare',   '', '', 'undercurl', s:white)
+endif
 
-" Sign column, line numbers.
-call s:Col('LineNr', 'blue', s:linenr_background)
-call s:Col('CursorLineNr', 'base5', s:linenr_background)
-call s:Col('SignColumn', '', s:linenr_background)
-call s:Col('ColorColumn', '', s:linenr_background)
+call s:HighlightX('VisualNOS',      '', s:greys[4], '', '')
+call s:HighlightX('Visual',         '', s:greys[4], '', '')
+call s:Highlight('Search',          s:black, s:frost, '', '')
+call s:Highlight('IncSearch',       s:black, s:sunny, '', '')
 
-" Visual selection.
-call s:Col('Visual', '', 'base_7')
+call s:Highlight('Pmenu',           s:black, s:gold, '', '')
+call s:Highlight('PmenuSel',        s:gold, s:black, 'bold', '')
+call s:Highlight('Pmenu',           '', s:greys[5], '', '')
+call s:Highlight('Pmenu',           s:frost, '', '', '')
 
-" Easy-to-guess code elements.
-call s:Col('Comment', 'purple')
-call s:Col('String', 'darkgray')
-call s:Col('Number', 'red')
-call s:Col('Statement', 'base_2')
-call s:Col('Special', 'base_7')
-call s:Col('Identifier', 'base5')
+call s:HighlightX('DiffDelete',     s:auburn, s:auburn, '', '')
+call s:HighlightX('DiffText',       '', s:greys[3], '', '')
+call s:HighlightX('DiffChange',     '', s:greys[4], '', '')
+call s:HighlightX('DiffAdd',        '', s:moss, '', '')
 
-" Constants, Ruby symbols.
-call s:Col('Constant', 'blue')
+call s:HighlightX('Underlined',     '', '', 'underline', '')
 
-" Some HTML tags (<title>, some <h*>s)
-call s:Col('Title', 'yellow')
+call s:Highlight('Directory',       s:lime, '', '', '')
+call s:Highlight('Question',        s:lime, '', '', '')
+call s:Highlight('MoreMsg',         s:lime, '', '', '')
 
-" <a> tags.
-call s:Col('Underlined', 'yellow')
-call s:Attr('Underlined', 'underline')
+call s:Highlight('WildMenu',        s:black, s:lilac, 'bold', '')
 
-" Types, HTML attributes, Ruby constants (and class names).
-call s:Col('Type', 'base_2')
+call s:Highlight('Title',           '', '', 'underline', '')
 
-" Stuff like 'require' in Ruby.
-call s:Col('PreProc', 'red')
+call s:HighlightX('Tag',            '', '', 'bold', '')
 
-" Tildes on the bottom of the page.
-call s:Col('NonText', 'base_7')
+"*** PYTHON ***
+call s:Highlight('pythonDecorator',     s:cerise, '', '', '')
+call s:Highlight('pythonException',     s:lime, '', 'bold', '')
+call s:Highlight('pythonExceptions',    s:lime, '', '', '')
 
-" " Concealed stuff.
-" call s:Col('Conceal', 'cyan', s:background)
+"*** RUBY ***
+call s:Highlight('rubyModule',            s:lime, '', '', '')
+call s:Highlight('rubyModuleNameTag',     s:text, '', '', '')
+call s:Highlight('rubyPseudoVariable',    s:text, '', '', '')
+call s:Highlight('rubyClass',             s:cerise, '', '', '')
+call s:Highlight('rubyClassNameTag',      s:gold, '', '', '')
+call s:Highlight('rubyDefine',            s:cerise, '', '', '')
+call s:Highlight('rubyConstant',          s:text, '', '', '')
+call s:Highlight('rubyStringDelimiter',   s:sunny, '', '', '')
+call s:Highlight('rubyInterpolation',     s:lilac, '', '', '')
+call s:Highlight('rubyInterpolationDelimiter',     s:lilac, '', '', '')
 
-" TODO and similar tags.
-call s:Col('Todo', 'yellow', s:background)
+"*** JAVASCRIPT ***
+call s:Highlight('javaScriptNull',        s:lilac, '', 'bold', '')
+call s:Highlight('javaScriptNumber',      s:lilac, '', 'bold', '')
+call s:Highlight('javaScriptFunction',    s:cerise, '', '', '')
+call s:Highlight('javaScriptOperator',    s:cerise, '', 'bold', '')
+call s:Highlight('javaScriptBraces',      s:text, '', '', '')
+call s:Highlight('javaScriptIdentifier',  s:brick, '', '', '')
+call s:Highlight('javaScriptMember',      s:gold, '', '', '')
+call s:Highlight('javaScriptType',        s:gold, '', '', '')
 
-" The column separating vertical splits.
-call s:Col('VertSplit', 'base_3', s:linenr_background)
-call s:Col('StatusLineNC', 'base_3', 'base2')
+"*** CLOJURE ***
+call s:Highlight('clojureDefine',         s:cerise, '', '', '')
+call s:Highlight('clojureSpecial',        s:cerise, '', '', '')
+call s:Highlight('clojureCond',           s:cerise, '', '', '')
+call s:Highlight('clojureParen0',         s:text, '', '', '')
+call s:Highlight('clojureMacro',          s:lime, '', 'bold', '')
+call s:Highlight('clojureDispatch',       s:lilac, '', 'bold', '')
+call s:Highlight('clojureError',          s:black, s:mordant, 'bold', '')
 
-" Matching parenthesis.
-call s:Col('MatchParen', 'yellow', 'orange')
+"*** SCALA ***
+call s:Highlight('scalaClassName',        s:gold, '', '', '')
+call s:Highlight('scalaConstructor',      s:text, '', '', '')
 
-" Special keys, e.g. some of the chars in 'listchars'. See ':h listchars'.
-call s:Col('SpecialKey', 'base_7')
+"*** VIMSCRIPT ***
+call s:Highlight('vimCommentTitle',       s:frost, '', 'bold', '')
+call s:Highlight('vimParenSep',           s:text, '', '', '')
+call s:Highlight('vimSep',                s:text, '', '', '')
+call s:Highlight('vimOper',               s:text, '', '', '')
 
-" Folds.
-call s:Col('Folded', 'darkblue', 'blue')
-call s:Col('FoldColumn', 'darkblue', 'blue')
+"*** XML ***
+call s:Highlight('xmlProcessingDelim',       s:brick, '', '', '')
+call s:Highlight('xmlNamespace',             s:gold, '', '', '')
+call s:Highlight('xmlTag',                   s:gold, '', '', '')
+call s:Highlight('xmlTagName',               s:gold, '', '', '')
+call s:Highlight('xmlEndTag',                s:gold, '', '', '')
+call s:Highlight('xmlAttrib',                s:brick, '', '', '')
+call s:Highlight('xmlAttribPunct',           s:brick, '', '', '')
+call s:Highlight('xmlEntity',                s:lilac, '', 'bold', '')
+call s:Highlight('xmlEntityPunct',           s:lilac, '', '', '')
 
-" Searching.
-call s:Col('Search', 'darkblue', 'yellow')
-call s:Attr('IncSearch', 'reverse')
+"*** HTML ***
+call s:Highlight('htmlTagName',              s:gold, '', '', '')
+call s:Highlight('htmlTag',                  s:gold, '', '', '')
+call s:Highlight('htmlTagN',                 s:gold, '', '', '')
+call s:Highlight('htmlEvent',                s:brick, '', '', '')
+call s:Highlight('htmlEventDQ',              s:lime, '', '', '')
+call s:Highlight('htmlH1',                   '', '', 'bold', '')
+call s:Highlight('htmlH2',                   '', '', 'bold', '')
+call s:Highlight('htmlH3',                   '', '', 'italic', '')
+call s:Highlight('htmlH4',                   '', '', 'italic', '')
+call s:Highlight('htmlScriptTag',            s:lime, '', '', '')
 
-" Popup menu.
-call s:Col('Pmenu', 'lightgray', 'darkgreen')
-call s:Col('PmenuSel', 'darkblue', 'base_2')
-call s:Col('PmenuSbar', '', 'base_5')
-call s:Col('PmenuThumb', '', 'black')
+"*** HTML/JAVASCRIPT ***
+call s:Highlight('javaScript',               s:text, '', '', '')
 
-" Command line stuff.
-call s:Col('ErrorMsg', 'red', 'base_0')
-call s:Col('Error', 'red', 'base_0')
-call s:Col('ModeMsg', 'blue')
-call s:Col('WarningMsg', 'red')
+"*** CSS ***
+call s:Highlight('cssSelectorOp',            s:text, '', '', '')
+call s:Highlight('cssSelectorOp2',           s:text, '', '', '')
+call s:Highlight('cssBraces',                s:text, '', '', '')
+call s:Highlight('cssPseudoClass',           s:lime, '', '', '')
+call s:Highlight('cssValueNumber',           s:lilac, '', '', '')
+call s:Highlight('cssValueLength',           s:lilac, '', '', '')
+call s:Highlight('cssColor',                 s:lilac, '', '', '')
+call s:Highlight('cssImportant',             s:lime, '', 'bold', '')
+call s:Highlight('cssCommonAttr',            s:lilac, '', 'bold', '')
+call s:Highlight('cssRenderAttr',            s:lilac, '', 'bold', '')
+call s:Highlight('cssBoxAttr',               s:lilac, '', 'bold', '')
+call s:Highlight('cssUIAttr',                s:lilac, '', 'bold', '')
+call s:Highlight('cssTextAttr',              s:lilac, '', 'bold', '')
+call s:Highlight('cssTableAttr',             s:lilac, '', 'bold', '')
+call s:Highlight('cssColorAttr',             s:lilac, '', 'bold', '')
 
-" Wild menu.
-" StatusLine determines the color of the non-active entries in the wild menu.
-call s:Col('StatusLine', 'base_1', 'base_4')
-call s:Col('WildMenu', 'darkblue', 'blue')
+"*** minibufexpl ***
+call s:Highlight('MBENormal',                 s:greys[1], '', '', '')
+call s:Highlight('MBEVisibleNormal',          s:white, '', 'bold', '')
+call s:Highlight('MBEVisibleActive',          s:frost, '', 'bold', '')
+call s:Highlight('MBEChanged',                s:greys[1], '', 'italic', '')
+call s:Highlight('MBEVisibleChanged',         s:white, '', 'bold,italic', '')
+call s:Highlight('MBEVisibleChangedActive',   s:frost, '', 'bold,italic', '')
 
-" Tab line.
-call s:Col('TabLineSel', 'lightgray', 'base_4')  " the selected tab
-call s:Col('TabLine', '', 'darkgreen')     " the non-selected tabs
-call s:Col('TabLineFill', 'base_0', 'base_0') " the rest of the tab line
+"*** vim-easymotion ***
+call s:Highlight('EasyMotionTarget',          s:cerise, '', 'bold', '')
+call s:Highlight('EasyMotionShade',           s:greys[2], '', '', '')
 
-" Spelling.
-call s:Col('SpellBad', 'lightpurple', 'darkblue')
-call s:Col('SpellCap', 'lightpurple', 'darkblue')
-call s:Col('SpellLocal', 'lightpurple')
-call s:Col('SpellRare', 'lightpurple', 'darkblue')
+"*** CtrlP ***
+call s:Highlight('CtrlPNoEntries',            s:mordant, '', '', '')
+call s:Highlight('CtrlPPrtBase',              '', '', 'bold', '')
 
-" Diffing.
-call s:Col('DiffAdd', 'lightgray', 'darkgreen')
-call s:Col('DiffChange', 'lightgray', 'blue')
-call s:Col('DiffDelete', 'lightgray', 'red')
-call s:Col('DiffText', 'lightgray', 'darkgreen')
-call s:Col('DiffAdded', 'darkgreen')
-call s:Col('DiffChanged', 'blue')
-call s:Col('DiffRemoved', 'red')
-call s:Col('DiffSubname', 'blue')
+"*** taglist.vim ***
+call s:Highlight('TagListTitle',              s:white, '', 'bold', '')
+call s:Highlight('TagListFileName',           s:brick, '', '', '')
 
-" Directories (e.g. netrw).
-call s:Col('Directory', 'darkgreen')
-
-
-" Programming languages and filetypes ==========================================
-
-" Ruby.
-call s:Col('rubyDefine', 'blue')
-call s:Col('rubyStringDelimiter', 'green')
-
-" HTML (and often Markdown).
-call s:Col('htmlArg', 'blue')
-call s:Col('htmlItalic', 'red')
-call s:Col('htmlBold', 'yellow', '')
-
-" Python
-call s:Col('pythonStatement', 'blue')
-
-
-" Plugin =======================================================================
-" unite.vim
-call s:Col('UniteGrep', 'base7', 'green')
-let g:unite_source_grep_search_word_highlight = 'UniteGrep'
-
-" ale https://github.com/w0rp/ale
-call s:Col('ALEWarningSign', 'yellow', s:linenr_background)
-call s:Col('ALEErrorSign', 'red', s:linenr_background)
-
-" neomake https://github.com/neomake/neomake
-call s:Col('NeomakeWarningSign', 'yellow', s:linenr_background)
-call s:Col('NeomakeErrorSign', 'red', s:linenr_background)
-call s:Col('NeomakeWarning', 'yellow')
-call s:Col('NeomakeError', 'red')
-
-" Cleanup =====================================================================
-
-unlet s:colors
-unlet s:background
-unlet s:linenr_background
+"*** YouCompleteMe ***
+call s:Highlight('YcmErrorSection',           s:greys[5], s:mordant, 'bold', '')
