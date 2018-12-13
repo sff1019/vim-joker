@@ -57,7 +57,7 @@ hi SpellRare guifg=#c8acff guibg=#0d1724 guisp=#0d1724 gui=underline ctermfg=183
 hi Comment guifg=#444675 guibg=NONE guisp=NONE gui=italic ctermfg=60 ctermbg=NONE cterm=NONE
 hi Character guifg=#6e83a8 guibg=NONE guisp=NONE gui=NONE ctermfg=67 ctermbg=NONE cterm=NONE
 hi TabLineSel guifg=#bfbfbf guibg=#0a3229 guisp=#0a3229 gui=bold ctermfg=7 ctermbg=23 cterm=bold
-hi Number guifg=#bb4216 guibg=#000000 guisp=#000000 gui=NONE ctermfg=1 ctermbg=NONE cterm=NONE
+hi Number guifg=#668888 guibg=#000000 guisp=#000000 gui=NONE ctermfg=66 ctermbg=NONE cterm=NONE
 hi Boolean guifg=#6e83a8 guibg=NONE guisp=NONE gui=NONE ctermfg=67 ctermbg=NONE cterm=NONE
 hi Operator guifg=#3d703d guibg=NONE guisp=NONE gui=bold ctermfg=65 ctermbg=NONE cterm=bold
 hi CursorLine guifg=NONE guibg=#132130 guisp=#132130 gui=NONE ctermfg=NONE ctermbg=236 cterm=NONE
@@ -70,7 +70,7 @@ hi CursorColumn guifg=NONE guibg=#132130 guisp=#132130 gui=NONE ctermfg=NONE cte
 hi Define guifg=#b6bd84 guibg=NONE guisp=NONE gui=NONE ctermfg=144 ctermbg=NONE cterm=NONE
 hi Function guifg=#5f5faf guibg=NONE guisp=NONE gui=bold ctermfg=61 ctermbg=NONE cterm=bold
 hi FoldColumn guifg=#0d1724 guibg=#6e83a8 guisp=#6e83a8 gui=italic ctermfg=235 ctermbg=67 cterm=NONE
-hi PreProc guifg=#990b25 guibg=NONE guisp=NONE gui=NONE ctermfg=88 ctermbg=NONE cterm=NONE
+hi PreProc guifg=#990b25 guibg=NONE guisp=NONE gui=bold ctermfg=88 ctermbg=NONE cterm=bold
 hi Visual guifg=#0d1724 guibg=#c8acff guisp=#c8acff gui=NONE ctermfg=235 ctermbg=183 cterm=NONE
 hi MoreMsg guifg=#b6bd84 guibg=NONE guisp=NONE gui=bold ctermfg=144 ctermbg=NONE cterm=bold
 hi SpellCap guifg=#c8acff guibg=#0d1724 guisp=#0d1724 gui=underline ctermfg=183 ctermbg=235 cterm=underline
