@@ -70,11 +70,11 @@ hi CursorColumn guifg=NONE guibg=#132130 guisp=#132130 gui=NONE ctermfg=NONE cte
 hi Define guifg=#b6bd84 guibg=NONE guisp=NONE gui=NONE ctermfg=144 ctermbg=NONE cterm=NONE
 hi Function guifg=#5f5faf guibg=NONE guisp=NONE gui=bold ctermfg=61 ctermbg=NONE cterm=bold
 hi FoldColumn guifg=#0d1724 guibg=#6e83a8 guisp=#6e83a8 gui=italic ctermfg=235 ctermbg=67 cterm=NONE
-hi PreProc guifg=#990b25 guibg=NONE guisp=NONE gui=bold ctermfg=88 ctermbg=NONE cterm=bold
+hi PreProc guifg=#668888 guibg=NONE guisp=NONE gui=bold ctermfg=66 ctermbg=NONE cterm=bold
 hi Visual guifg=#0d1724 guibg=#c8acff guisp=#c8acff gui=NONE ctermfg=235 ctermbg=183 cterm=NONE
 hi MoreMsg guifg=#b6bd84 guibg=NONE guisp=NONE gui=bold ctermfg=144 ctermbg=NONE cterm=bold
 hi SpellCap guifg=#c8acff guibg=#0d1724 guisp=#0d1724 gui=underline ctermfg=183 ctermbg=235 cterm=underline
-hi VertSplit guifg=#222277 guibg=#001122 guisp=#001122 gui=bold ctermfg=18 ctermbg=17 cterm=bold
+hi VertSplit guifg=#003355 guibg=#001122 guisp=#001122 gui=bold ctermfg=23 ctermbg=17 cterm=bold
 hi Exception guifg=#b6bd84 guibg=NONE guisp=NONE gui=bold ctermfg=144 ctermbg=NONE cterm=bold
 hi Keyword guifg=#b6bd84 guibg=NONE guisp=NONE gui=bold ctermfg=144 ctermbg=NONE cterm=bold
 hi Type guifg=#2d8f1a guibg=NONE guisp=NONE gui=bold ctermfg=28 ctermbg=NONE cterm=bold
