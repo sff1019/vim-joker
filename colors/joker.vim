@@ -37,12 +37,12 @@ hi Float guifg=#6e83a8 guibg=NONE guisp=NONE gui=NONE ctermfg=67 ctermbg=NONE ct
 hi StatusLineNC guifg=#ffffff guibg=#223311 guisp=#223311 gui=bold ctermfg=15 ctermbg=22 cterm=bold
 hi NonText guifg=#3d5570 guibg=NONE guisp=NONE gui=italic ctermfg=60 ctermbg=NONE cterm=NONE
 hi DiffText guifg=#e2e4e5 guibg=#261b36 guisp=#261b36 gui=NONE ctermfg=254 ctermbg=237 cterm=NONE
-hi ErrorMsg guifg=#ffffff guibg=#000310 guisp=#000310 gui=NONE ctermfg=15 ctermbg=17 cterm=NONE
+hi ErrorMsg guifg=#ffffff guibg=#000310 guisp=#000310 gui=NONE ctermfg=15 ctermbg=232 cterm=NONE
 hi Debug guifg=#b6bd84 guibg=NONE guisp=NONE gui=NONE ctermfg=144 ctermbg=NONE cterm=NONE
 hi PMenuSbar guifg=NONE guibg=#383838 guisp=#383838 gui=NONE ctermfg=NONE ctermbg=237 cterm=NONE
 hi Identifier guifg=#9064d1 guibg=NONE guisp=NONE gui=NONE ctermfg=98 ctermbg=NONE cterm=NONE
 hi SpecialChar guifg=#b6bd84 guibg=NONE guisp=NONE gui=NONE ctermfg=144 ctermbg=NONE cterm=NONE
-hi Conditional guifg=#ab9030 guibg=NONE guisp=NONE gui=bold ctermfg=136 ctermbg=NONE cterm=bold
+hi Conditional guifg=#870000 guibg=NONE guisp=NONE gui=bold ctermfg=88 ctermbg=NONE cterm=bold
 hi StorageClass guifg=#272991 guibg=NONE guisp=NONE gui=bold ctermfg=18 ctermbg=NONE cterm=bold
 hi Todo guifg=#ffffff guibg=#9caa9e guisp=#9caa9e gui=NONE ctermfg=15 ctermbg=108 cterm=NONE
 hi Special guifg=#9064d1 guibg=NONE guisp=NONE gui=NONE ctermfg=98 ctermbg=NONE cterm=NONE
@@ -74,7 +74,7 @@ hi PreProc guifg=#668888 guibg=NONE guisp=NONE gui=bold ctermfg=66 ctermbg=NONE 
 hi Visual guifg=#0d1724 guibg=#c8acff guisp=#c8acff gui=NONE ctermfg=235 ctermbg=183 cterm=NONE
 hi MoreMsg guifg=#b6bd84 guibg=NONE guisp=NONE gui=bold ctermfg=144 ctermbg=NONE cterm=bold
 hi SpellCap guifg=#c8acff guibg=#0d1724 guisp=#0d1724 gui=underline ctermfg=183 ctermbg=235 cterm=underline
-hi VertSplit guifg=#003355 guibg=#001122 guisp=#001122 gui=bold ctermfg=23 ctermbg=17 cterm=bold
+hi VertSplit guifg=#003355 guibg=#001122 guisp=#001122 gui=bold ctermfg=234 ctermbg=232 cterm=bold
 hi Exception guifg=#b6bd84 guibg=NONE guisp=NONE gui=bold ctermfg=144 ctermbg=NONE cterm=bold
 hi Keyword guifg=#b6bd84 guibg=NONE guisp=NONE gui=bold ctermfg=144 ctermbg=NONE cterm=bold
 hi Type guifg=#2d8f1a guibg=NONE guisp=NONE gui=bold ctermfg=28 ctermbg=NONE cterm=bold
@@ -90,9 +90,9 @@ hi Tag guifg=#b6bd84 guibg=NONE guisp=NONE gui=NONE ctermfg=144 ctermbg=NONE cte
 hi String guifg=#5f87af guibg=NONE guisp=NONE gui=NONE ctermfg=67 ctermbg=NONE cterm=NONE
 hi PMenuThumb guifg=#454545 guibg=#000000 guisp=#000000 gui=NONE ctermfg=238 ctermbg=NONE cterm=NONE
 hi MatchParen guifg=#b6bd84 guibg=NONE guisp=NONE gui=bold ctermfg=144 ctermbg=NONE cterm=bold
-hi Repeat guifg=#b6bd84 guibg=NONE guisp=NONE gui=bold ctermfg=144 ctermbg=NONE cterm=bold
+hi Repeat guifg=#870000 guibg=NONE guisp=NONE gui=bold ctermfg=88 ctermbg=NONE cterm=bold
 hi SpellBad guifg=#c8acff guibg=#0d1724 guisp=#0d1724 gui=underline ctermfg=183 ctermbg=235 cterm=underline
-hi Directory guifg=#272991 guibg=NONE guisp=NONE gui=bold ctermfg=18 ctermbg=NONE cterm=bold
+hi Directory guifg=#272991 guibg=NONE guisp=NONE gui=bold ctermfg=28 ctermbg=NONE cterm=bold
 hi Structure guifg=#272991 guibg=NONE guisp=NONE gui=bold ctermfg=18 ctermbg=NONE cterm=bold
 hi Macro guifg=#b6bd84 guibg=NONE guisp=NONE gui=NONE ctermfg=144 ctermbg=NONE cterm=NONE
 hi Underlined guifg=#c8acff guibg=#0d1724 guisp=#0d1724 gui=underline ctermfg=183 ctermbg=235 cterm=underline
