@@ -131,7 +131,7 @@ call s:Col('Constant', 'base4')
 call s:Col('Typedef', 'base10')
 call s:Attr('Typedef', 'bold')
 call s:Col('StorageClass', 'base4')
-call s:Col('Title', 'base15')
+call s:Col('Title', 'base10', 'base0')
 call s:Attr('Title', 'bold')
 
 call s:Col('Underlined', 'base15')
@@ -196,6 +196,8 @@ call s:Attr('Conditional', 'bold')
 call s:Col('PreCondit', 'base13')
 call s:Attr('PreCondit', 'bold')
 call s:Col('Delimiter', 'base3')
+
+call s:Col('Directory', 'base12')
 
 " Plugin =======================================================================
 
