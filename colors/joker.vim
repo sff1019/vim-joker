@@ -54,15 +54,15 @@ let s:colors = {}
 
 " Base colors.
 let s:colors.base0  = { 'gui': '#020406', 'cterm': 0 }  " bg
-let s:colors.base1  = { 'gui': '#c7404e', 'cterm': 1 }  " dark red
+let s:colors.base1  = { 'gui': '#d25b68', 'cterm': 1 }  " dark red
 let s:colors.base2  = { 'gui': '#34743a', 'cterm': 2 }  " dark green
 let s:colors.base3  = { 'gui': '#a89358', 'cterm': 3 }  " dark yellow
 let s:colors.base4  = { 'gui': '#036c92', 'cterm': 4 }  " dark blue
 let s:colors.base5  = { 'gui': '#292947', 'cterm': 5 }  " dark purple
 let s:colors.base6  = { 'gui': '#5f87af', 'cterm': 6 }  " bright blue
-let s:colors.base7  = { 'gui': '#cecee1', 'cterm': 7 }  " dark white
+let s:colors.base7  = { 'gui': '#79917a', 'cterm': 7 }  " dark white
 let s:colors.base8  = { 'gui': '#141317', 'cterm': 8 }  " bright black
-let s:colors.base9  = { 'gui': '#7f333b', 'cterm': 9 }  " bright red
+let s:colors.base9  = { 'gui': '#ca3f4e', 'cterm': 9 }  " bright red
 let s:colors.base10 = { 'gui': '#51b65a', 'cterm': 10 }  " bright green
 let s:colors.base11 = { 'gui': '#eeca68', 'cterm': 11 }  " bright yellow
 let s:colors.base12 = { 'gui': '#6f87af', 'cterm': 12 }  " dark cyan
@@ -76,6 +76,7 @@ let s:colors.darkCyan = { 'gui': '#192224', 'cterm': 235 }
 let s:colors.white = { 'gui': '#ffffff', 'cterm': 15 }
 let s:colors.darkpurple = { 'gui': '#2a2932', 'cterm': 236 }
 let s:colors.linenr = { 'gui': '#a1a6a8', 'cterm': 248 }
+let s:colors.red = { 'gui': '#824147' }
 
 " Native highlighting ==========================================================
 
@@ -95,11 +96,11 @@ call s:Col('LineNr', 'linenr', s:linenr_background)
 call s:Col('CursorLineNr', 'base15', s:linenr_background)
 call s:Col('SignColumn', '', s:linenr_background)
 call s:Col('ColorColumn', '', s:linenr_background)
-call s:Col('VertSplit', 'base7', s:linenr_background)
+call s:Col('VertSplit', 'base15', s:linenr_background)
 call s:Attr('VertSplit', 'bold')
 
-call s:Col('Visual', 'base15', s:linenr_background)
-call s:Col('VusualNOS', 'base15', s:linenr_background)
+call s:Col('Visual', 'base15', 'base7')
+call s:Col('VusualNOS', 'base15', 'gray')
 
 call s:Col('Comment', 'gray')
 call s:Col('String', 'base6')
@@ -115,7 +116,7 @@ call s:Col('Special', 'base14')
 call s:Col('Identifier', 'base12')
 call s:Col('Repeat', 'base10')
 call s:Attr('Repeat', 'bold')
-call s:Col('Structure', 'base9')
+call s:Col('Structure', 'base1')
 call s:Attr('Structure', 'bold')
 
 call s:Col('Function', 'base13')
@@ -165,8 +166,8 @@ call s:Col('PMenuThumb', '', 'gray')
 call s:Col('WildMenu', 'base15', 'base13')
 call s:Attr('WildMenu', 'bold')
 
-call s:Col('ErrorMsg', 'white', 'base9')
-call s:Col('Error', 'base15', 'base9')
+call s:Col('ErrorMsg', 'white', 'base1')
+call s:Col('Error', 'base15', 'base1')
 call s:Col('ModeMsg', 'base15', 'base5')
 call s:Col('WarningMsg', 'base15', 'base3')
 
@@ -176,7 +177,7 @@ call s:Col('TabLineSel', 'base15', 'base13')
 call s:Attr('TabLine', 'bold')
 call s:Col('TabLineFill', 'base0', s:background)
 
-call s:Col('SpellBad', 'base15', 'base1')
+call s:Col('SpellBad', 'base15', 'base9')
 call s:Attr('SpellBad', 'bold')
 call s:Col('SpellCap', 'base15', 'base4')
 call s:Attr('SpellCap', 'bold')
