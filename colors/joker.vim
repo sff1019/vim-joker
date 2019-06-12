@@ -65,13 +65,12 @@ let s:colors.base8  = { 'gui': '#141317', 'cterm': 8 }  " bright black
 let s:colors.base9  = { 'gui': '#e22b37', 'cterm': 9 }  " bright red
 let s:colors.base10 = { 'gui': '#51b65a', 'cterm': 10 }  " bright green
 let s:colors.base11 = { 'gui': '#eeca68', 'cterm': 11 }  " bright yellow
-let s:colors.base12 = { 'gui': '#33849e', 'cterm': 12 }  " dark cyan
+let s:colors.base12 = { 'gui': '#6f87af', 'cterm': 12 }  " dark cyan
 let s:colors.base13 = { 'gui': '#4d4e93', 'cterm': 13 }  " bright purple
 let s:colors.base14 = { 'gui': '#8d8eba', 'cterm': 14 }  " bright cyan
 let s:colors.base15 = { 'gui': '#d9d9da', 'cterm': 15 }  " bright white
 
 let s:colors.gray = { 'gui': '#2d2d42', 'cterm': 238 }
-let s:colors.purple = { 'gui': '#6f87af', 'cterm': 67 }
 let s:colors.green = { 'gui': '#123815', 'cterm': 22 }
 let s:colors.darkCyan = { 'gui': '#192224', 'cterm': 235 }
 let s:colors.white = { 'gui': '#ffffff', 'cterm': 15 }
@@ -113,7 +112,7 @@ call s:Col('Operator', 'base10')
 call s:Attr('Operator', 'bold')
 call s:Col('Statement', 'base10')
 call s:Col('Special', 'base14')
-call s:Col('Identifier', 'purple')
+call s:Col('Identifier', 'base12')
 call s:Col('Repeat', 'base10')
 call s:Attr('Repeat', 'bold')
 call s:Col('Structure', 'base12')
