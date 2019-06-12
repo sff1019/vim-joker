@@ -197,7 +197,7 @@ call s:Col('PreCondit', 'base13')
 call s:Attr('PreCondit', 'bold')
 call s:Col('Delimiter', 'base3')
 
-call s:Col('Directory', 'base12')
+call s:Col('Directory', 'base4')
 
 " Plugin =======================================================================
 
