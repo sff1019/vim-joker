@@ -54,7 +54,7 @@ let s:colors = {}
 
 " Base colors.
 let s:colors.base0  = { 'gui': '#020406', 'cterm': 0 }  " bg
-let s:colors.base1  = { 'gui': '#9c1c27', 'cterm': 1 }  " dark red
+let s:colors.base1  = { 'gui': '#c7404e', 'cterm': 1 }  " dark red
 let s:colors.base2  = { 'gui': '#34743a', 'cterm': 2 }  " dark green
 let s:colors.base3  = { 'gui': '#a89358', 'cterm': 3 }  " dark yellow
 let s:colors.base4  = { 'gui': '#036c92', 'cterm': 4 }  " dark blue
@@ -62,7 +62,7 @@ let s:colors.base5  = { 'gui': '#292947', 'cterm': 5 }  " dark purple
 let s:colors.base6  = { 'gui': '#5f87af', 'cterm': 6 }  " bright blue
 let s:colors.base7  = { 'gui': '#cecee1', 'cterm': 7 }  " dark white
 let s:colors.base8  = { 'gui': '#141317', 'cterm': 8 }  " bright black
-let s:colors.base9  = { 'gui': '#e22b37', 'cterm': 9 }  " bright red
+let s:colors.base9  = { 'gui': '#7f333b', 'cterm': 9 }  " bright red
 let s:colors.base10 = { 'gui': '#51b65a', 'cterm': 10 }  " bright green
 let s:colors.base11 = { 'gui': '#eeca68', 'cterm': 11 }  " bright yellow
 let s:colors.base12 = { 'gui': '#6f87af', 'cterm': 12 }  " dark cyan
@@ -115,7 +115,7 @@ call s:Col('Special', 'base14')
 call s:Col('Identifier', 'base12')
 call s:Col('Repeat', 'base10')
 call s:Attr('Repeat', 'bold')
-call s:Col('Structure', 'base12')
+call s:Col('Structure', 'base9')
 call s:Attr('Structure', 'bold')
 
 call s:Col('Function', 'base13')
@@ -165,8 +165,8 @@ call s:Col('PMenuThumb', '', 'gray')
 call s:Col('WildMenu', 'base15', 'base13')
 call s:Attr('WildMenu', 'bold')
 
-call s:Col('ErrorMsg', 'white', 'base1')
-call s:Col('Error', 'base15', 'base1')
+call s:Col('ErrorMsg', 'white', 'base9')
+call s:Col('Error', 'base15', 'base9')
 call s:Col('ModeMsg', 'base15', 'base5')
 call s:Col('WarningMsg', 'base15', 'base3')
 
@@ -188,7 +188,7 @@ call s:Col('DiffDelete', '', 'base2')
 call s:Col('DiffChange', '', 'base5')
 call s:Col('DiffAdd', '', 'base2')
 
-call s:Col('Include', 'base9')
+call s:Col('Include', 'base1')
 call s:Attr('Include', 'bold')
 call s:Col('Conditional', 'base10')
 call s:Attr('Conditional', 'bold')
