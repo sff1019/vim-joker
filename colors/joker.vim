@@ -189,7 +189,7 @@ call s:Col('DiffDelete', '', 'base2')
 call s:Col('DiffChange', '', 'base5')
 call s:Col('DiffAdd', '', 'base2')
 
-call s:Col('Include', 'base1')
+call s:Col('Include', 'green')
 call s:Attr('Include', 'bold')
 call s:Col('Conditional', 'base10')
 call s:Attr('Conditional', 'bold')
