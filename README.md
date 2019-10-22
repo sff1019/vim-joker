@@ -14,11 +14,11 @@ This is a vim colorscheme that is inspired by marvel's joker.
 First, add one of the lines, depending on your plugin manager.
 ```
 " vim-plug
-Plug 'whatyouhide/vim-joker'
+Plug 'sff1019/vim-joker'
 " NeoBundle
-NeoBundle 'whatyouhide/vim-joker'
+NeoBundle 'sff1019/vim-joker'
 " Vundle
-Plugin 'whatyouhide/vim-joker'
+Plugin 'sff1019/vim-joker'
 " dein
 call dein#add('sff1019/vim-joker')
 ```
